@@ -15,6 +15,7 @@
 		$ mkdir first_sinatra_app
 		$ cd first_sinatra_app
 		
+		$ mkdir views
 		$ touch first_app.rb
 		$ mine .
 
@@ -81,7 +82,6 @@
 
 		
 ### Let's redo this app with actual pages for our views:
-* Create a views directory.
 
 * Create an root.erb file in the views directory:
 
