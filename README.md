@@ -136,23 +136,6 @@
 		
 		
 
-##@@@@@@@@ Deploy to Heroku @@@@@@@@@@@
-
-### First push to Github
-* Go to Github and create a repository. 
-* Follow instructions on Github to push your code to the repository.
-
-### Then push to Heroku
-
-* Prepare same directory for Heroku depoyment
-
-		$ heroku create
-
-* Push to Heroku
-
-		$ git push heroku master
-
-
 
 ###@@@@@@@@ Extra items @@@@@@@@@@@
 
