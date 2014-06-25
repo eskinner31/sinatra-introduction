@@ -68,7 +68,7 @@
 * Add a method for the '/greeting' route in 'first_app.rb':
 
 		get '/greeting' do
-		  "<h1>This is the show page</h1>" +
+		  "<h1>This is the greeting page</h1>" +
 		  "<a href='/'>Back to root page</a>"
 		end
 
@@ -90,7 +90,7 @@
 		<h1>root.erb</h1>
 		<h1>Hello, World!</h1>
 		<h3>This is my first app</h3>
-		<a href="/show">Go to greeting page</a>
+		<a href="/greeting">Go to greeting page</a>
 
 * Create a 'greeting.erb' page in the views directory:
 		
@@ -124,13 +124,13 @@
 * Edit 'first_app.rb':
 
 		get '/greeting' do
-		  erb :greeting, :locals => { :greeting => "Aloha", :name => "Spencer"}
+		  erb :greeting, :locals => { :salutation => "Aloha", :name => "Spencer"}
 		end
 
 * Edit 'greeting.erb':
 
 		<h1>greeting.erb</h1>
-		<h1><%= greeting %> <%= name %></h1>
+		<h1><%= salutation %> <%= name %>!</h1>
 		<h1>This is the greeting page</h1>	
 		<a href='/'>Back to root page</a>
 		
