@@ -62,14 +62,14 @@
 		get '/' do
 		  "<h1>Hello, World!</h1>" +
 		  "<h3>This is my first app</h3>" +
-		  "<a href='/show'>Go to Show Page</a>"    # '/show' is the new route
+		  "<a href='/greeting'>Go to greeting page</a>"    # '/greeting' is the new route
 		ebd
 		
-* Add a method for the '/show' route in 'first_app.rb':
+* Add a method for the '/greeting' route in 'first_app.rb':
 
-		get '/show' do
+		get '/greeting' do
 		  "<h1>This is the show page</h1>" +
-		  "<a href='/'>Back</a>"
+		  "<a href='/'>Back to root page</a>"
 		end
 
 * Stop server: 
@@ -83,33 +83,33 @@
 ### Let's redo this app with actual pages for our views:
 * Create a views directory.
 
-* Create an index.erb file in the views directory:
+* Create an root.erb file in the views directory:
 
-	views/index.erb:
+	views/root.erb:
 		
-		<h1>index.erb</h1>
+		<h1>root.erb</h1>
 		<h1>Hello, World!</h1>
 		<h3>This is my first app</h3>
-		<a href="/show">Go to Show Page</a>
+		<a href="/show">Go to greeting page</a>
 
-* Create a 'show.erb' page in the views directory:
+* Create a 'greeting.erb' page in the views directory:
 		
-	views/show.erb:
+	views/greeting.erb:
 		
-		<h1>show.erb</h1>
-		<h1>This is the show.erb page</h1>	
-		<a href='/'>Back</a>
+		<h1>greeting.erb</h1>
+		<h1>This is the greeting page</h1>	
+		<a href='/'>Back to root page</a>
 
 * Modify the 'first_app.rb' file as follows:
 
 		require 'sinatra'
 		
 		get '/' do  
-		  erb :index  # renders the index.erb page in the views directory
+		  erb :root  # renders the root.erb page in the views directory
 		end
 		
-		get '/show' do
-		  erb :show  # renders the show.erb page in the views directory
+		get '/greeting' do
+		  erb :greeting  # renders the greeting.erb page in the views directory
 		end
 
 * Stop server: 
@@ -118,6 +118,40 @@
 * Start server:  
 
 		$ ruby first_app.rb
+		
+### Let's pass a variable to the greeting.erb view page
+
+* Edit 'first_app.rb':
+
+		get '/greeting' do
+		  erb :greeting, :locals => { :greeting => "Aloha", :name => "Spencer"}
+		end
+
+* Edit 'greeting.erb':
+
+		<h1>greeting.erb</h1>
+		<h1><%= greeting %> <%= name %></h1>
+		<h1>This is the greeting page</h1>	
+		<a href='/'>Back to root page</a>
+		
+		
+
+##@@@@@@@@ Deploy to Heroku @@@@@@@@@@@
+
+### First push to Github
+* Go to Github and create a repository. 
+* Follow instructions on Github to push your code to the repository.
+
+### Then push to Heroku
+
+* Prepare same directory for Heroku depoyment
+
+		$ heroku create
+
+* Push to Heroku
+
+		$ git push heroku master
+
 
 
 ###@@@@@@@@ Extra items @@@@@@@@@@@
@@ -130,7 +164,7 @@
 		$ gem install sinatra-contrib
 		
 		# for inside your app file
-		require 'sinatra-reloader'  
+		require 'sinatra/reloader'  
 
 ### It is common practice to have a layout.rb file in the views directory that provides the html, head and body tags that wraps around the .erb files.
 
