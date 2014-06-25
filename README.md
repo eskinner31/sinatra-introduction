@@ -55,7 +55,7 @@
 		$ ruby first_app.rb
 
 
-### Let's add a second route: '/show'
+### Let's add a second route: '/greeting'
 
 * Modify the root route ('/') to add an anchor tag:
 
@@ -182,7 +182,6 @@
 				  
 				</body>
 		</html>
-
 
 
 
