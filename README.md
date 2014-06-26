@@ -163,7 +163,7 @@
 
 ### It is common practice to have a layout.rb file in the views directory that provides the html, head and body tags that wraps around the .erb files.
 
-* Create a layout.rb file in the views directory. The '<%= yield %>' line, yields to the
+* Create a layout.erb file in the views directory. The '<%= yield %>' line, yields to the
   different '.erb' files that are 
 
 		<html>
