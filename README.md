@@ -166,6 +166,7 @@
 * Create a layout.erb file in the views directory. The '<%= yield %>' line, yields to the
   different '.erb' files that are 
 
+		<DOCTYPE! html>
 		<html>
 			<head>
 				<title>first app</title>

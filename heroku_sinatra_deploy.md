@@ -35,6 +35,10 @@
 
 		$ git push heroku master
 
+* Open the website you just created
+
+		$ heroku open
+
 
 ###@@@@@@@ Resources @@@@@@@@@@@@
 
