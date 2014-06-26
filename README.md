@@ -1,4 +1,4 @@
-# Intro to Sinatra
+# Intro to Sinatra - first app
 
 ## Sinatra is a light weight web server that runs on Ruby. 
 
@@ -85,7 +85,7 @@
 
 * Create an root.erb file in the views directory:
 
-	views/root.erb:
+	views/root.erb
 		
 		<h1>root.erb</h1>
 		<h1>Hello, World!</h1>
@@ -94,13 +94,15 @@
 
 * Create a 'greeting.erb' page in the views directory:
 		
-	views/greeting.erb:
+	views/greeting.erb
 		
 		<h1>greeting.erb</h1>
 		<h1>This is the greeting page</h1>	
 		<a href='/'>Back to root page</a>
 
 * Modify the 'first_app.rb' file as follows:
+
+	first_app.rb
 
 		require 'sinatra'
 		
@@ -123,11 +125,15 @@
 
 * Edit 'first_app.rb':
 
+	first_app.rb
+
 		get '/greeting' do
 		  erb :greeting, :locals => { :salutation => "Aloha", :name => "Spencer"}
 		end
 
 * Edit 'greeting.erb':
+
+	views/greeting.erb
 
 		<h1>greeting.erb</h1>
 		<h1><%= salutation %> <%= name %>!</h1>
