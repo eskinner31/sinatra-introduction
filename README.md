@@ -9,7 +9,6 @@
 
 		$ gem install sinatra
 		
-
 * Create a directory for todays's work
 
 		$ mkdir first_sinatra_app
@@ -18,17 +17,23 @@
 		$ mkdir views
 		$ touch first_app.rb
 		$ mine .
-
 		
 ### Let's ceate the first route: '/' - the 'root' route
 
 * Edit 'first_app.rb' as follows:
 
-		require 'sinatra'
+		require 'sinatra/base'
 		
-		get '/' do           # '/' is the route - the "root" route
-		  "Hello, World!"
+		class MyApp < Sinatra::Base
+		
+			get '/' do           # '/' is the route - the "root" route
+			  "Hello, World!"
+			end
+			
+			run! if app_file == $0
+			
 		end
+
 		  
 * Go to the command line and run the app: 
 
@@ -42,15 +47,23 @@
 
 * Edit 'first_app.rb' as follows:
 
-		require 'sinatra'
+		require 'sinatra/base'
 		
-		get '/' do
-		  "<h1>Hello, World!</h1>" +
-		  "<h3>This is my first app</h3>"
+		class MyApp < Sinatra::Base
+		
+			get '/' do
+		  		"<h1>Hello, World!</h1>" +
+		  		"<h3>This is my first app</h3>"
+			end
+		
+			run! if app_file == $0
+			
 		end
+		
 * Stop server: 
 
 		control-C  # in the server window
+		
 * Start server:  
 
 		$ ruby first_app.rb
@@ -76,11 +89,11 @@
 * Stop server: 
 
 		control-C  # in the server window
+		
 * Start server:  
 
 		$ ruby first_app.rb
 
-		
 ### Let's redo this app with actual pages for our views:
 
 * Create an root.erb file in the views directory:
@@ -104,19 +117,27 @@
 
 	first_app.rb
 
-		require 'sinatra'
+		require 'sinatra/base'
 		
-		get '/' do  
-		  erb :root  # renders the root.erb page in the views directory
-		end
+		class MyApp < Sinatra::Base
 		
-		get '/greeting' do
-		  erb :greeting  # renders the greeting.erb page in the views directory
+			get '/' do  
+		  		erb :root  # renders the root.erb page in the views directory
+			end
+		
+			get '/greeting' do
+		  		erb :greeting  # renders the greeting.erb page in the views directory
+			end
+			
+			run! if app_file == $0
+			
 		end
+
 
 * Stop server: 
 
 		control-C  # in the server window
+		
 * Start server:  
 
 		$ ruby first_app.rb
@@ -139,21 +160,6 @@
 		<h1><%= salutation %> <%= name %>!</h1>
 		<h1>This is the greeting page</h1>	
 		<a href='/'>Back to root page</a>
-		
-		
-
-
-###@@@@@@@@ Extra items @@@@@@@@@@@
-
-### It is a pain to stop and start the server every time you make a code change. 
-### There is a gem for that! It's called 'sinatra-reloader' ('sinatra-reloader' is a part of the 'sinatra-contrib' gem).
-
-* Install common Sinatra extensions with the 'sinatra-contrib' gem. 'sinatra-reloader' is a part of the sinatra-contrib gem and allows you to refresh the browser to see changes without stopping and restarting the server.
-
-		$ gem install sinatra-contrib
-		
-		# for inside your app file
-		require 'sinatra/reloader'  
 
 ### It is common practice to have a layout.rb file in the views directory that provides the html, head and body tags that wraps around the .erb files.
 
@@ -167,9 +173,9 @@
 			<body>
 				<h1>First Application</h1>
 				
-				  <%= yield %>
+				 <%= yield %>
 				  
-				</body>
+			</body>
 		</html>
 
 

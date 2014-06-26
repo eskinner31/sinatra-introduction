@@ -14,7 +14,7 @@
 	config.ru
 	
 		require './first_app'
-		run Sinatra::Application
+		run MyApp
 
 
 * run bundle install
