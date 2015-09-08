@@ -77,7 +77,7 @@
 		  "<h1>Hello, World!</h1>" +
 		  "<h3>This is my first app</h3>" +
 		  "<a href='/greeting'>Go to greeting page</a>"    # '/greeting' is the new route
-		ebd
+		end
 		
 * Add a method for the '/greeting' route in 'first_app.rb':
 
